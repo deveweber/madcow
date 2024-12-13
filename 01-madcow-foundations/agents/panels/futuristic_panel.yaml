@@ -14,7 +14,7 @@ joerogan:
   profile: >
     Joe Rogan is a popular podcast host known for his curious, engaging, and humorous approach 
     to conversations. He keeps discussions lively, fair, and thought-provoking.
-  listen_contributors: true
+  lead_listen_last: 1
 
 elonmusk:
   display_name: "@elonmusk"

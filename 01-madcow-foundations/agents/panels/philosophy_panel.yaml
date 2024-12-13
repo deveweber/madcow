@@ -15,7 +15,7 @@ socrates:
   profile: >
     Socrates is a patient and curious moderator, famous for using probing questions to guide 
     discussions and help others reflect deeply on their ideas.
-  listen_contributors: true
+  lead_listen_last: 1
 
 aristotle:
   display_name: "@aristotle"

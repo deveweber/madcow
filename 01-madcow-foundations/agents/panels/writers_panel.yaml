@@ -14,7 +14,7 @@ vonnegut:
   profile: >
     Vonnegut is a humorous and philosophical guide, blending deep reflection with absurdity, 
     ensuring a fun but insightful conversation.
-  listen_contributors: true
+  lead_listen_last: 1
 
 adams:
   display_name: "@adams"
