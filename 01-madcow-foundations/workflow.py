@@ -34,18 +34,21 @@ LLMS = {
     "gemini": gemini_llm,
 }
 
+# default LLM for the lead agent
 DEFAULT_LEAD_LLM = "openai"
+# default LLM for the contributor agents
 DEFAULT_CONTRIBUTOR_LLM = "openai"
 
-AGENTS_SET = "futuristic_panel"
+# panel to use - see agents/panels/
+AGENTS_SET = "creative_panel"
 
-# number of same agent contributions to take into account
-DEFAULT_LEAD_AGENT_CONTRIBUTIONS_LAST = 5
-DEFAULT_CONTRIBUTOR_AGENT_CONTRIBUTIONS_LAST = 0
+# how many contributions from the same agent to take into account
+DEFAULT_LEAD_AGENT_CONTRIBUTIONS_LAST = 10
+DEFAULT_CONTRIBUTOR_AGENT_CONTRIBUTIONS_LAST = 5
 
-# number of contributions from other agents to take into account
-DEFAULT_LEAD_LISTEN_LAST = 2
-DEFAULT_CONTRIBUTOR_LISTEN_LAST = 0
+# how many contributions from other agents to take into account
+DEFAULT_LEAD_LISTEN_LAST = 5
+DEFAULT_CONTRIBUTOR_LISTEN_LAST = 2
 
 ### CONFIG END ###
 
@@ -225,7 +228,15 @@ def get_step_messages(state: CollaborativeState, lead_agent_name: str, agent_con
     messages = []
     for step in reversed(state["steps"]):
         if step["category"] in ["human", "lead", "appointment"]:
-            messages.extend(list(reversed(step["messages"])))
+            # the AI messages with other agents should be converted to human messages
+            step_messages = []
+            for message in reversed(step["messages"]):
+                if message.type == "ai" and message.name != lead_agent_name:
+                    content = f"Response from\n-----------------------------------\n{message.name}: {message.content}"
+                    message = HumanMessage(content=content, name=message.name)
+                step_messages.append(message)
+
+            messages.extend(step_messages)
         elif step["category"] == "contribution":
             contributions = [
                 message

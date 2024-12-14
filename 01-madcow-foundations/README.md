@@ -40,7 +40,9 @@ chainlit run app.py
 
 ## Configuration
 
-Each panel is configured through YAML files located in `agents/panels/`. Modify these files to adjust agent behaviors and capabilities.
+1. Update the `.env` file with your API keys and other necessary credentials.
+2. Each panel is configured through YAML files located in `agents/panels/`. Modify these files to adjust agent behaviors and capabilities.
+3. Update the `workflow.py` file to adjust the workflow configuration.
 
 ## License
 
