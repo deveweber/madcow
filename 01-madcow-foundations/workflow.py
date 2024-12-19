@@ -20,7 +20,7 @@ import uuid
 load_dotenv()
 
 # Initialize the language model
-openai_llm = ChatOpenAI(model="gpt-4o")
+openai_llm = ChatOpenAI(model="gpt-4o", temperature=0.7)
 openai_llm_mini = ChatOpenAI(model="gpt-4o-mini")
 anthropic_llm = ChatAnthropic(model="claude-3-5-sonnet-20240620")
 gemini_llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
