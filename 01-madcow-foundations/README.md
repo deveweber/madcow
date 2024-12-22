@@ -47,3 +47,6 @@ chainlit run app.py
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## References
+- [Multi-Agent Dynamic Contribution Workflow (MaDCoW) Foundations](https://medium.com/@dimitar.h.stoyanov/multi-agent-dynamic-contribution-workflow-madcow-part-1-foundations-6f9f75a8bb49)
